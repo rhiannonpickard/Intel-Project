@@ -1,1 +1,573 @@
+.intel-letter {
+	display: block;
+	font-size: 4em;
+	font-weight: 900;
+	color: #33d1ff;
+	text-align: center;
+	font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+	letter-spacing: 0.2em;
+	margin-top: 32px;
+	text-shadow: 0 0 24px #33d1ff, 0 0 48px #0071c5;
+}
+
+/* Scroll snap styling for footer */
+footer {
+	scroll-snap-align: start;
+	min-height: 20vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 20px;
+	background: rgba(24, 31, 42, 0.4);
+	border-top: 1px solid rgba(51, 209, 255, 0.3);
+}
+/* Layout for timeline and info panel */
+.main-content-row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+		gap: 48px;
+		width: 100%;
+		max-width: 1400px;
+	margin: 10vh auto 0;
+	scroll-snap-align: start;
+	padding: 60px 20px;
+	min-height: 100vh;
+	padding-top: 2rem;
+}
+
+.timeline {
+		flex: none;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 32px;
+		position: relative;
+		padding: 60px 40px 40px 40px;
+		width: 100%;
+		min-width: 900px;
+		overflow-x: auto;
+		scrollbar-width: thin;
+		scrollbar-color: #33d1ff #232b3e;
+		scroll-snap-type: x mandatory;
+		background: linear-gradient(135deg, #1a1f2e 0%, #232b3e 50%, #181f2a 100%);
+		border: 2px solid #33d1ff;
+		border-radius: 24px;
+		box-shadow: 0 0 32px #33d1ff44, 0 4px 24px rgba(0, 0, 0, 0.3);
+		margin: 0 auto;
+		max-width: 1200px;
+}
+
+.flashcards-container {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 64px;
+	width: 100%;
+	min-width: 900px;
+	overflow-x: auto;
+	scrollbar-width: thin;
+	scrollbar-color: #33d1ff #232b3e;
+	scroll-snap-type: x mandatory;
+}
+
+.info-panel {
+    background: rgba(35, 43, 62, 0.5);
+    border: 2px solid rgba(51, 209, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(51, 209, 255, 0.3);
+    padding: 40px 40px;
+    min-width: 500px;
+    max-width: 700px;
+    min-height: 350px;
+    color: #e0eafc;
+    font-family: 'Segoe UI', 'Orbitron', Arial, sans-serif;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-panel h2 {
+	margin-top: 0;
+		font-size: 2.4em;
+		text-align: center;
+	color: #33d1ff;
+	text-shadow: 0 0 12px #33d1ff, 0 0 24px #00bfff;
+}
+
+.info-panel img {
+		box-shadow: 0 2px 48px #33d1ffcc;
+		border: 2px solid #33d1ff;
+		background: #181f2a;
+		margin-bottom: 24px;
+		width: 100%;
+		max-width: 340px;
+		display: block;
+		font-size: 2em;
+	text-align: center;
+	margin-top: 12px;
+}
+
+.info-placeholder {
+	color: #888;
+	font-size: 1.1em;
+	text-align: center;
+	margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+		.main-content-row {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 24px;
+			min-height: 0;
+			margin: 5vh auto 0;
+			padding: 30px 15px;
+		}
+		
+		.timeline {
+			min-width: 100%;
+			max-width: 95%;
+			margin: 10px auto;
+			padding: 40px 20px;
+			overflow-x: visible;
+			scroll-snap-type: none;
+		}
+		
+		.flashcards-container {
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 32px;
+			min-width: 100%;
+			overflow-x: visible;
+			scroll-snap-type: none;
+		}
+		
+		.timeline-item {
+			width: 100%;
+			max-width: 300px;
+		}
+		
+		.info-panel {
+			max-width: 100%;
+			min-width: 0;
+			margin-top: 16px;
+			position: static;
+			padding: 32px 12px;
+		}
+}
+.flashcard {
+	/* ...existing code... */
+	background: linear-gradient(120deg, #181f2a 60%, #232b3e 100%);
+	border: 2px solid #33d1ff;
+	box-shadow: 0 0 24px #33d1ff55, 0 2px 16px #0071c588;
+	transition: all 0.4s ease-out;
+	position: relative;
+	z-index: 1;
+}
+
+.flashcard:hover {
+	box-shadow: 0 0 48px #33d1ffcc, 0 2px 32px #00bfffcc, 0 8px 40px rgba(51, 209, 255, 0.4);
+	border-color: #00bfff;
+	transform: scale(1.1) translateY(-8px) rotateY(3deg);
+	z-index: 10;
+}
+
+.flashcard-inner {
+	/* ...existing code... */
+	overflow: hidden;
+	background: none;
+}
+
+.flashcard-front, .flashcard-back {
+	/* ...existing code... */
+	box-shadow: 0 2px 16px #33d1ff22;
+}
+
+.flashcard-front {
+	/* ...existing code... */
+	background: linear-gradient(90deg, #0071c5 0%, #33d1ff 100%);
+	color: #fff;
+	border-bottom: 2px solid #33d1ff;
+	text-shadow: 0 0 12px #33d1ff, 0 0 24px #00bfff;
+	font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+	letter-spacing: 2px;
+	font-size: 2.2em;
+	animation: glowTitle 2s infinite alternate;
+}
+
+@keyframes glowTitle {
+	from { text-shadow: 0 0 12px #33d1ff, 0 0 24px #00bfff; }
+	to { text-shadow: 0 0 32px #33d1ff, 0 0 48px #00bfff; }
+}
+
+.flashcard-back {
+	/* ...existing code... */
+	background: linear-gradient(120deg, #232b3e 60%, #181f2a 100%);
+	color: #e0eafc;
+	border-top: 2px solid #33d1ff;
+	font-family: 'Segoe UI', 'Orbitron', Arial, sans-serif;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	justify-content: flex-start;
+}
+
+.flashcard-back h3 {
+	margin-top: 0;
+	margin-bottom: 16px;
+	font-size: 1.3em;
+	color: #33d1ff;
+	font-weight: 600;
+	text-shadow: 0 0 8px #33d1ff;
+}
+
+.flashcard-back p {
+	margin: 12px 0 0;
+	font-size: 0.9em;
+	line-height: 1.4;
+	text-align: center;
+}
+
+.flashcard-img {
+	width: 100%;
+	max-width: 160px;
+	height: 100px;
+	object-fit: cover;
+	margin-bottom: 12px;
+	box-shadow: 0 2px 12px #33d1ff44;
+	border: 2px solid #33d1ff;
+	background: #181f2a;
+	border-radius: 8px;
+	transition: box-shadow 0.3s, border-color 0.3s;
+}
+.flashcard-back:hover .flashcard-img {
+	box-shadow: 0 0 32px #00bfffcc;
+	border-color: #00bfff;
+}
+.flashcard-back {
+	/* ...existing code... */
+	overflow-y: auto;
+	max-height: 100%;
+	scrollbar-width: thin;
+	scrollbar-color: #33d1ff #232b3e;
+}
+
+/* Optional: Style scrollbars for Webkit browsers */
+.flashcard-back::-webkit-scrollbar {
+	width: 8px;
+}
+.flashcard-back::-webkit-scrollbar-thumb {
+	background: #33d1ff;
+}
+.flashcard-back::-webkit-scrollbar-track {
+	background: #232b3e;
+}
+/* Flashcard image styles */
+.flashcard-img {
+	width: 100%;
+	max-width: 180px;
+	height: 80px;
+	object-fit: cover;
+	margin-bottom: 10px;
+	box-shadow: 0 2px 12px #33d1ff44;
+	border: 1px solid #33d1ff;
+	background: #181f2a;
+}
+/* --- Tech/Computer Theme Styles --- */
+body {
+  background: linear-gradient(120deg, #181f2a 0%, #232b3e 100%);
+  color: #e0eafc;
+  font-family: 'Segoe UI', 'Orbitron', Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}/* Add a subtle circuit pattern overlay (SVG as background) */
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-image: url('data:image/svg+xml;utf8,<svg width="100%25" height="100%25" xmlns="http://www.w3.org/2000/svg"><rect width="100%25" height="100%25" fill="none"/><g stroke="%2333d1ff" stroke-width="1" opacity="0.08"><path d="M10 10 H 90 V 90 H 10 Z M50 10 V 90 M10 50 H 90"/></g></svg>');
+	pointer-events: none;
+	z-index: 0;
+}
+
+header, .title-bg-container {
+  background: rgba(24, 31, 42, 0.85);
+  border-bottom: 2px solid #33d1ff;
+  box-shadow: 0 4px 24px rgba(51, 209, 255, 0.08);
+  scroll-snap-align: start;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}.tech-title {
+	/* ...existing code... */
+	text-align: center;
+	display: block;
+	font-size: 3em;
+	font-weight: 900;
+	letter-spacing: 2px;
+	color: #33d1ff;
+	text-shadow: 0 0 12px #33d1ff, 0 0 32px #0071c5;
+	font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+	margin-top: 32px;
+	margin-bottom: 8px;
+	background: linear-gradient(90deg, #0071c5 0%, #33d1ff 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+	position: relative;
+	z-index: 2;
+}
+
+.intel-bg-symbol {
+	/* ...existing code... */
+	opacity: 0.18;
+	filter: drop-shadow(0 0 32px #33d1ff);
+}
+
+.timeline-dot {
+	/* ...existing code... */
+	background: #33d1ff;
+	box-shadow: 0 0 0 4px #0071c5, 0 0 12px #33d1ff;
+}
+
+.flashcard {
+	/* ...existing code... */
+	background: rgba(24, 31, 42, 0.95);
+	border: 1px solid #33d1ff;
+	box-shadow: 0 2px 16px rgba(51, 209, 255, 0.12);
+}
+
+.flashcard-front {
+	/* ...existing code... */
+	background: #0071c5;
+	color: #fff;
+	border-bottom: 2px solid #33d1ff;
+	text-shadow: 0 0 8px #33d1ff;
+}
+
+.flashcard-back {
+	/* ...existing code... */
+	background: #232b3e;
+	color: #e0eafc;
+	border-top: 2px solid #33d1ff;
+	box-shadow: 0 0 16px #33d1ff inset;
+}
+
+/* Glow effect for links/buttons (if any) */
+a, button {
+	color: #33d1ff;
+	text-shadow: 0 0 8px #33d1ff;
+	border: none;
+	background: none;
+	cursor: pointer;
+	transition: color 0.2s;
+}
+a:hover, button:hover {
+	color: #fff;
+}
+/* Container for title and background symbol */
+.title-bg-container {
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 900px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* Title background area */
+.title-bg {
+	position: relative;
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Intel symbol behind the title */
+.intel-bg-symbol {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 320px;
+	height: auto;
+	opacity: 0.13;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.tech-title {
+	position: relative;
+	z-index: 2;
+}
+/* Tech-themed title styles */
+.tech-title {
+    font-size: 3em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #00bfff;
+    text-shadow: 0 0 8px #0071c5, 0 0 24px #00bfff;
+    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    background: linear-gradient(80deg, #0071c5 0%, #00bfff 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-align: center; /* Center the title */
+    display: block;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+}
+
+header img {
+    display: block;
+    margin: 0 auto 12px auto;
+    max-width: 120px;
+}
+
+/* Optional: Import Orbitron font for a tech look */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 /* Add your CSS here */
+/* Timeline container styles */
+.timeline {
+	position: relative;
+	margin: 40px 0;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: flex-start;
+	gap: 32px;
+	padding-bottom: 60px;
+	padding-left: 0;
+}
+
+/* Vertical line for the timeline */
+.timeline::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 30px;
+	width: 100%;
+	height: 4px;
+	background: #33d1ff;
+	z-index: 0;
+}
+
+/* Timeline item styles */
+.timeline-item {
+	position: relative;
+	margin-bottom: 0;
+	margin-top: 0;
+	margin-right: 0;
+	margin-left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+			min-width: 220px;
+		flex: 1 1 0;
+	z-index: 1;
+	scroll-snap-align: center;
+}
+
+/* Dot for each timeline event */
+.timeline-dot {
+	position: relative;
+	top: auto;
+	left: auto;
+	width: 24px;
+	height: 24px;
+	background: #33d1ff;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	box-shadow: 0 0 0 4px #0071c5, 0 0 12px #33d1ff;
+	margin-bottom: 12px;
+}
+
+/* Content for each timeline event */
+.timeline-content {
+	background: #f9f9f9;
+	padding: 16px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+	margin-left: 40px;
+}
+
+/* Flashcard flip styles */
+.flashcard {
+	width: 250px;
+	height: 150px;
+	perspective: 1000px;
+	margin: 0;
+	margin-top: 12px;
+}
+
+.flashcard-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.6s;
+	transform-style: preserve-3d;
+}
+
+.flashcard:hover .flashcard-inner {
+	transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.flashcard-front {
+	background: #0071c5;
+	color: #fff;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.flashcard-back {
+	background: #f9f9f9;
+	color: #222;
+	transform: rotateY(180deg);
+	flex-direction: column;
+	padding: 16px;
+	text-align: center;
+}
